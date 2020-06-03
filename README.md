@@ -30,7 +30,7 @@ public class myFancyClass {
 }
 ```
   
-###Why should I use it?
+### Why should I use it?
 Suppose you have a situation where you want to make sure that all classes that implement an interface 
 behave in the same way regarding a specific task. A static interface method provides you the means to do exactly that.  
 **A use case could be as follows**:  
