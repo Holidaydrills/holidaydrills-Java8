@@ -1,9 +1,9 @@
-#Holiday Drills - Java 8
+# Holiday Drills - Java 8
 Here you can find the most important language features introduced with Java 8.
 
 ## Static Interface Methods
 With Java 8 it is possible to define static methods in interfaces.
-###How do I use it?
+### How do I use it?
 Just declare a method as static and provide an implementation as you would do in a plain old Java class:
 ```
 interface MyFancyInterface {
@@ -40,10 +40,7 @@ You have several implementations of that form validator for different
 for different online shops. This is because each online shop has specific validations for some fields. 
 The shops are located in different countries, so maybe addresses are validated in different ways. Or the a field 
 like "Additional Information" could allow 200 characters in one shop, in another it could have up to 1000 characters.  
-But some of the fields have to be validated in exactly the same way even across locations. One example is the email 
-address. This this can be validated in exactly the same way in all online shops.
- 
-
-
-One example could be a form validator that checks
-if all fields in 
+But some of the fields - like the email address - have to be validated in exactly the same way even across locations. 
+With a static interface method you can provide an implementation for such a validation and make sure, that implementing
+classes will not override it.
+  
