@@ -15,15 +15,15 @@ interface MyFancyInterface {
 }
 ```
 You can call such static interface methods only within the interface itself or through the interface. 
-What that means is, that you can't call a static interface method through a class that is implementing
-it:
+What that means is, that you can't call a static interface method through an instance of a class that is implementing
+the interface:
 ```
 public class myFancyClass {
   
     public void doSomethingFancy() {
         //As you see below, you call the method through the interface itself. 
         //You don't need a class that implements the interface in order to call it.
-        //In fact, it's even not possible to call the method through the implementing class.
+        //In fact, it's even not possible to call the method through the instance of a class implementing the interface.
         MyFancyInterface.myFancyStaticMethod();
     }
 
@@ -32,8 +32,8 @@ public class myFancyClass {
   
 ### Why should I use it?
 Suppose you have a situation where you want to make sure that all classes that implement an interface 
-behave in the same way regarding a specific task. A static interface method provides you the means to do exactly that.  
-**A use case could be as follows**:  
+behave in the same way regarding a specific task. A static interface method provides you the means to do exactly that.
+### Use case   
 Say you have an ` interface FormValidator`. This validator has some functionality to check the form inputs of
 users in the checkout process of online shops, like addresses, emails, additional information.  
 You have several implementations of that form validator for different
