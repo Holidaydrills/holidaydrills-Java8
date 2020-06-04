@@ -17,7 +17,7 @@ public class WebShopCheckout {
 
     private boolean validateForm(String email) {
         // Note: the validateEmail method is called as a static method
-        if(Validator.validateEmail(email)) {
+        if(FormValidator.validateEmail(email)) {
             return true;
         }
         return false;

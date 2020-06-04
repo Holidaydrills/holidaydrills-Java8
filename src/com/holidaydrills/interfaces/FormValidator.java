@@ -1,7 +1,7 @@
 package com.holidaydrills.interfaces;
 
 
-interface Validator {
+interface FormValidator {
 
     /*
     Email validation should be the same across all validators implementing the Validator interface.

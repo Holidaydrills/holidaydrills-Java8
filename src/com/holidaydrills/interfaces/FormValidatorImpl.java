@@ -1,6 +1,6 @@
 package com.holidaydrills.interfaces;
 
-public class FormValidatorImpl implements Validator {
+public class FormValidatorImpl implements FormValidator {
 
     /*
     The default implementation in the Validator interface defines the form field for additional information as invalid

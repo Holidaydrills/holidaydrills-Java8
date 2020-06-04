@@ -34,13 +34,21 @@ public class myFancyClass {
 Suppose you have a situation where you want to make sure that all classes that implement an interface 
 behave in the same way regarding a specific task. A static interface method provides you the means to do exactly that.
 ### Use case   
-Say you have an ` interface FormValidator`. This validator has some functionality to check the form inputs of
+>(You can find the implementation of the use case in this repository in the 
+>[src/com/holidaydrills/interfaces](./src/com/holidaydrills/interfaces) directory).  
+
+Say you have an [FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java). This validator has some 
+functionality to check the form inputs of
 users in the checkout process of online shops, like addresses, emails, additional information.  
-You have several implementations of that form validator for different
-for different online shops. This is because each online shop has specific validations for some fields. 
+You have several implementations of that form validator for different online shops. This is because each online shop 
+has specific validations for some fields. 
 The shops are located in different countries, so maybe addresses are validated in different ways. Or the a field 
 like "Additional Information" could allow 200 characters in one shop, in another it could have up to 1000 characters.  
 But some of the fields - like the email address - have to be validated in exactly the same way even across locations. 
 With a static interface method you can provide an implementation for such a validation and make sure, that implementing
-classes will not override it.
+classes will not override it.  
+A sample implementation of the [FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java) can be found 
+[here](./src/com/holidaydrills/interfaces/FormValidatorImpl.java). You will recognize that it doesn't contain an 
+implementation of the `validateEmail` method as it is already implemented as a static interface method within the
+[FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java).
   
