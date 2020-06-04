@@ -7,7 +7,6 @@ public class FormValidatorImpl implements FormValidator {
     if the input is longer than 200 characters.
     In our implementation we want to be this kind of input field only valid if it is max 100 characters.
     */
-    @Override
     public boolean validateAdditionalInformation(String additionalInformation) {
         if(additionalInformation.length() > 100) {
             return false;

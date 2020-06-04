@@ -3,14 +3,13 @@ Here you can find the most important language features introduced with Java 8.
 
 ## Static Interface Methods
 With Java 8 it is possible to define static methods in interfaces.
-### How do I use it?
+### How does it work?
 Just declare a method as static and provide an implementation as you would do in a plain old Java class:
 ```
 interface MyFancyInterface {
 
     static void myFancyStaticMethod() {
         System.out.println("This is a static interface method");
-
     }
 }
 ```
@@ -52,3 +51,33 @@ A sample implementation of the [FormValidator](./src/com/holidaydrills/interface
 implementation of the `validateEmail` method as it is already implemented as a static interface method within the
 [FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java).
   
+## Default Interface Methods
+With Java 8 it is possible to define no only abstract methods in interfaces, but you can also provide methods with a 
+default implementation.
+
+## How does it work?
+It's quite simple: you just need to use the `default` keyword in the method declaration and provide an implementation
+as you would usually do in a Java class.
+```
+interface MyFancyInterface {
+
+    default String sayHello() {
+        System.out.println("Hi there");
+    }
+
+}
+```
+That's actually it. Now this method can be called through the instance of an implementation even if this method is not
+implemented by that instance:
+```
+public class MyFancyInterfaceImpl() {
+    // Nothing here, still you could call the 'sayHello()' method e.g. from another class
+}
+
+public class AnotherClass() {
+    public void callFancyMethod() {
+        MyFancyInterfaceImpl fancyInstance = new MyFancyInterfaceImpl();
+        fancyInstance.sayHello(); // Will print 'Hi there'
+    }
+}
+``` 
