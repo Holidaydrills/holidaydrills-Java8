@@ -35,6 +35,13 @@ behave in the same way regarding a specific task. A static interface method prov
 ### Use case   
 >(You can find the implementation of the use case in this repository in the 
 >[src/com/holidaydrills/interfaces](./src/com/holidaydrills/interfaces) directory).  
+>There you will find 
+>* a [FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java) interface which contains a static method for
+>email address validation. 
+>* a [FormValidatorImpl](./src/com/holidaydrills/interfaces/FormValidatorImpl.java) class which represents the 
+>implementation of the interface. It doesn't contain any email validation method.
+>* a [WebShopCheckout](./src/com/holidaydrills/interfaces/WebShopCheckout.java) class which represents the checkout of
+>an online shop that uses the email validation. This class calls the static email validation method of the interface.
 
 Say you have an [FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java). This validator has some 
 functionality to check the form inputs of
