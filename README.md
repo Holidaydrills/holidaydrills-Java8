@@ -138,7 +138,7 @@ public interface EvenMoreFancyInterface extends FancyInterface {
 }
 
 public class EvenMoreFancyInterfaceImpl implements EvenMoreFancyInterface {
-    
+    // The sayHello method isn't implemented so the original default implementation will be used.
 }
 
 public class AnotherClass {
