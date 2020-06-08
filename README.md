@@ -62,7 +62,7 @@ implementation of the `validateEmail` method as it is already implemented as a s
 With Java 8 it is possible to define not only abstract methods in interfaces, but you can also provide methods with a 
 default implementation.
 
-## How does it work?
+### How does it work?
 It's quite simple: you just need to use the `default` keyword in the method declaration and provide an implementation
 as you would usually do in a Java class.
 ```
