@@ -8,16 +8,21 @@ public class WebShopCheckout {
         this.formValidator = formValidator;
     }
 
-    public String doCheckout(String name, String email, String price, String address) {
-        if(validateForm(email)) {
+    public String doCheckout(String email, String additionalInformation) {
+        if(validateForm(email, additionalInformation)) {
             return "Successfully checked out.";
         }
         return "Form input is not valid. Please check your input and try again.";
     }
 
-    private boolean validateForm(String email) {
-        // Note: the validateEmail method is called as a static method
-        if(FormValidator.validateEmail(email)) {
+    private boolean validateForm(String email, String additionalInformation) {
+        // Note:
+        // - the validateEmail method is called as a static method
+        // - the additionalInformation input is using the implementation of FormValidatorImpl. If you comment out the
+        //   validateAdditionalInformation method in FormValidatorImpl, it will use the default implementation of
+        //   FormValidator
+        if(FormValidator.validateEmail(email) &&
+                formValidator.validateAdditionalInformation(additionalInformation)) {
             return true;
         }
         return false;
