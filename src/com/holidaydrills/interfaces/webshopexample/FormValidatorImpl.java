@@ -1,4 +1,4 @@
-package com.holidaydrills.interfaces;
+package com.holidaydrills.interfaces.webshopexample;
 
 public class FormValidatorImpl implements FormValidator {
 

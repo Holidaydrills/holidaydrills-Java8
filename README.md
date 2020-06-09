@@ -36,14 +36,14 @@ behave in the same way regarding a specific task. A static interface method prov
 >(You can find the implementation of the use case in this repository in the 
 >[src/com/holidaydrills/interfaces](./src/com/holidaydrills/interfaces) directory).  
 >There you will find 
->* a [FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java) interface which contains a static method for
+>* a [FormValidator](./src/com/holidaydrills/interfaces/webshopexample/FormValidator.java) interface which contains a static method for
 >email address validation. 
->* a [FormValidatorImpl](./src/com/holidaydrills/interfaces/FormValidatorImpl.java) class which represents the 
+>* a [FormValidatorImpl](./src/com/holidaydrills/interfaces/webshopexample/FormValidatorImpl.java) class which represents the 
 >implementation of the interface. It doesn't contain any email validation method.
->* a [WebShopCheckout](./src/com/holidaydrills/interfaces/WebShopCheckout.java) class which represents the checkout of
+>* a [WebShopCheckout](./src/com/holidaydrills/interfaces/webshopexample/WebShopCheckout.java) class which represents the checkout of
 >an online shop that uses the email validation. This class calls the static email validation method of the interface.
 
-Say you have an [FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java). This validator has some 
+Say you have an [FormValidator](./src/com/holidaydrills/interfaces/webshopexample/FormValidator.java). This validator has some 
 functionality to check the form inputs of
 users in the checkout process of online shops, like addresses, emails, additional information.  
 You have several implementations of that form validator for different online shops. This is because each online shop 
@@ -53,10 +53,26 @@ like "Additional Information" could allow 200 characters in one shop, in another
 But some of the fields - like the email address - have to be validated in exactly the same way even across locations. 
 With a static interface method you can provide an implementation for such a validation and make sure, that implementing
 classes will not override it.  
-A sample implementation of the [FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java) can be found 
-[here](./src/com/holidaydrills/interfaces/FormValidatorImpl.java). You will recognize that it doesn't contain an 
+A sample implementation of the [FormValidator](./src/com/holidaydrills/interfaces/webshopexample/FormValidator.java) can be found 
+[here](./src/com/holidaydrills/interfaces/webshopexample/FormValidatorImpl.java). You will recognize that it doesn't contain an 
 implementation of the `validateEmail` method as it is already implemented as a static interface method within the
-[FormValidator](./src/com/holidaydrills/interfaces/FormValidator.java).
+[FormValidator](./src/com/holidaydrills/interfaces/webshopexample/FormValidator.java).  
+You're planning to open your first online shop in Finland. You've already implemented the product catalogue, some fancy 
+search capabilities and the user management. But as you want to earn money you need some kind of checkout process. You 
+think about what's needed and the first step would be to make sure, that customers provide their information in the 
+correct form. So you decide to implement a validation for the checkout form. In order to keep the code clean and make it 
+reusable in case you need to serve some other online shops with slightly different requirements you decide to have the 
+following structure:
+* A [FormValidator](./src/com/holidaydrills/interfaces/webshopexample/FormValidator.java) interface which provides the generic methods 
+that are valid across all forms in all online shops
+* A [FormValidatorFIN](./src/com/holidaydrills/interfaces/webshopexample/FormValidatorFIN.java) which provides an interface for your 
+Finnish online shop (later other country specific interfaces can follow)
+* The [CheckoutFormValidator](./src/com/holidaydrills/interfaces/webshopexample/CheckoutFormValidator.java) class which implements the  
+[FormValidatorFIN](./src/com/holidaydrills/interfaces/webshopexample/FormValidatorFIN.java) interface
+* The [WebShopCheckout](./src/com/holidaydrills/interfaces/webshopexample/WebShopCheckout.java) class which is responsible for the 
+whole checkout process. As one of the steps of the checkout process it does the validation by using the 
+[CheckoutFormValidator](./src/com/holidaydrills/interfaces/webshopexample/CheckoutFormValidator.java) 
+
   
 ## Default Interface Methods
 With Java 8 it is possible to define not only abstract methods in interfaces, but you can also provide methods with a 
