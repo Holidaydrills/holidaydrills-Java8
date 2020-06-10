@@ -2,30 +2,58 @@ package com.holidaydrills.interfaces.webshopexample;
 
 public class WebShopCheckout {
 
-    private FormValidatorImpl formValidator;
+    private FormValidatorFINImpl formValidator;
 
-    public WebShopCheckout(FormValidatorImpl formValidator) {
+    public WebShopCheckout(FormValidatorFINImpl formValidator) {
         this.formValidator = formValidator;
     }
 
-    public String doCheckout(String email, String additionalInformation) {
-        if(validateForm(email, additionalInformation)) {
-            return "Successfully checked out.";
-        }
-        return "Form input is not valid. Please check your input and try again.";
+/*    default boolean validateEmail(String email) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(regex);
     }
 
-    private boolean validateForm(String email, String additionalInformation) {
-        // Note:
-        // - the validateEmail method is called as a static method
-        // - the additionalInformation input is using the implementation of FormValidatorImpl. If you comment out the
-        //   validateAdditionalInformation method in FormValidatorImpl, it will use the default implementation of
-        //   FormValidator
-        if(FormValidator.validateEmail(email) &&
-                formValidator.validateAdditionalInformation(additionalInformation)) {
-            return true;
+    default boolean validateName(String name) {
+        if(name.length() > 30) {
+            return false;
         }
-        return false;
+        return true;
+    }
+
+    default boolean validateAddress(String address) {
+        if(address.length() > 100) {
+            return false;
+        }
+        return true;
+    }
+
+    default boolean validateAdditionalInformation(String additionalInformation) {
+        if(additionalInformation.length() > 200) {
+            return false;
+        }
+        return true;
+    }*/
+
+    public String doCheckout(String email, String name, String address, String additionalInformation) {
+        String invalidFieldName = validateForm(email, name, address, additionalInformation);
+        if (invalidFieldName.isEmpty()) {
+            return "Successfully checked out.";
+        }
+        return FormValidator.errorMessageForField(invalidFieldName);
+    }
+
+    private String validateForm(String email, String name, String address, String additionalInformation) {
+        String invalidFieldName = "";
+        if(!formValidator.validateEmail(email)) {
+            invalidFieldName = "email";
+        } else if(!formValidator.validateEmail(name)) {
+            invalidFieldName = "name";
+        } else if(!formValidator.validateEmail(address)) {
+            invalidFieldName = "address";
+        } else if(!formValidator.validateEmail(additionalInformation)) {
+            invalidFieldName = "additional information";
+        }
+        return invalidFieldName;
     }
 
 }

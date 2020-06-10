@@ -38,7 +38,7 @@ behave in the same way regarding a specific task. A static interface method prov
 >There you will find 
 >* a [FormValidator](./src/com/holidaydrills/interfaces/webshopexample/FormValidator.java) interface which contains a static method for
 >email address validation. 
->* a [FormValidatorImpl](./src/com/holidaydrills/interfaces/webshopexample/FormValidatorImpl.java) class which represents the 
+>* a [FormFormValidatorFINImpl](./src/com/holidaydrills/interfaces/webshopexample/FormFormValidatorFINImpl.java) class which represents the 
 >implementation of the interface. It doesn't contain any email validation method.
 >* a [WebShopCheckout](./src/com/holidaydrills/interfaces/webshopexample/WebShopCheckout.java) class which represents the checkout of
 >an online shop that uses the email validation. This class calls the static email validation method of the interface.
@@ -54,7 +54,7 @@ But some of the fields - like the email address - have to be validated in exactl
 With a static interface method you can provide an implementation for such a validation and make sure, that implementing
 classes will not override it.  
 A sample implementation of the [FormValidator](./src/com/holidaydrills/interfaces/webshopexample/FormValidator.java) can be found 
-[here](./src/com/holidaydrills/interfaces/webshopexample/FormValidatorImpl.java). You will recognize that it doesn't contain an 
+[here](./src/com/holidaydrills/interfaces/webshopexample/FormFormValidatorFINImpl.java). You will recognize that it doesn't contain an 
 implementation of the `validateEmail` method as it is already implemented as a static interface method within the
 [FormValidator](./src/com/holidaydrills/interfaces/webshopexample/FormValidator.java).  
 You're planning to open your first online shop in Finland. You've already implemented the product catalogue, some fancy 

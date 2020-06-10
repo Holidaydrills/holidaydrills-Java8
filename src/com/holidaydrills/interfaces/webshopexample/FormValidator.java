@@ -13,7 +13,7 @@ interface FormValidator {
     }
 
     default boolean validateName(String name) {
-        if(name.length() > 200) {
+        if(name.length() > 30) {
             return false;
         }
         return true;
