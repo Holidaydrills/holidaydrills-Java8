@@ -1,6 +1,9 @@
 package com.holidaydrills.interfaces.webshopexample;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 interface FormValidator {
 
     static String errorMessageForField(String fieldName) {
@@ -8,29 +11,20 @@ interface FormValidator {
     }
 
     default boolean validateEmail(String email) {
-        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        String regex = "^[\\w-_.+]*[\\w-_.]@([\\w]+\\.)+[\\w]+[\\w]$";
         return email.matches(regex);
     }
 
     default boolean validateName(String name) {
-        if(name.length() > 30) {
-            return false;
-        }
-        return true;
+        return name.length() <= 30;
     }
 
     default boolean validateAddress(String address) {
-        if(address.length() > 100) {
-            return false;
-        }
-        return true;
+        return address.length() <= 100;
     }
 
     default boolean validateAdditionalInformation(String additionalInformation) {
-        if(additionalInformation.length() > 200) {
-            return false;
-        }
-        return true;
+        return additionalInformation.length() <= 200;
     }
 
 }
