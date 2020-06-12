@@ -6,7 +6,7 @@ public class FormValidatorFINImpl implements FormValidatorFIN {
     // (even if it has a default implementation in the FormValidator interface)
     @Override
     public boolean validateAddress(String address) {
-        return false;
+        return address.length() <= 100;
     }
 
     // We don't implement the validateEmail method as the default implementation in FormValidator fits our needs.

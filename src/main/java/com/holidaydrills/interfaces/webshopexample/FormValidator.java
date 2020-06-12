@@ -20,7 +20,7 @@ interface FormValidator {
     }
 
     default boolean validateAddress(String address) {
-        return address.length() <= 100;
+        return address.length() <= 10;
     }
 
     default boolean validateAdditionalInformation(String additionalInformation) {
