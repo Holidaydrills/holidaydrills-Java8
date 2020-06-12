@@ -14,4 +14,8 @@ public interface FancyInterface {
         return "Goodbye my friend!";
     }
 
+    static String giveMeTheDescriptionOfThisInterface() {
+        return "This is a Fancy interface which provides methods to say hello and to say goodbye:)";
+    }
+
 }

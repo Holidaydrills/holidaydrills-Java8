@@ -8,6 +8,10 @@ public class FancyInterfaceImpl implements FancyInterface {
     public String sayHelloAgain() {
         return "Hello all! How are you?";
     }
+
+    public String getFancyInterfaceInfo() {
+        return FancyInterface.giveMeTheDescriptionOfThisInterface();
+    }
 }
 
 class AnotherClass {
