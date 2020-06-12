@@ -10,4 +10,10 @@ public interface FancyInterface {
         return "Hi there";
     }
 
+    default String sayGoodBye() {
+        return "Goodbye my friend!";
+    }
+
+
+
 }
