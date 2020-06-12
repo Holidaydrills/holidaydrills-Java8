@@ -11,8 +11,7 @@ public interface EventMoreFancyInterface extends FancyInterface {
     }
 
     // Here the default implementation is overridden by an abstract method. That means that a class that implements
-    // this interface also has to implement this method. The default implementation from FancyInterface is not valid
-    // anymore.
+    // EventMoreFancyInterface has to provide an implementation.
     @Override
     String sayGoodBye();
 

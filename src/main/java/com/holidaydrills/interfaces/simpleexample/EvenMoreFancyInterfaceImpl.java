@@ -2,6 +2,11 @@ package com.holidaydrills.interfaces.simpleexample;
 
 public class EvenMoreFancyInterfaceImpl implements EventMoreFancyInterface{
 
+    // The method sayHello() is not implemented here, so the default implementation from FancyInterface is valid
+
+    // The method sayHelloAgain() is not implemented here, so the default implementation from FancyInterface is valid
+
+    // Must be implemented here since EvenMoreFancyInterfaceImpl declares the method as abstract
     @Override
     public String sayGoodBye() {
         return "See you in a while, crocodile!";

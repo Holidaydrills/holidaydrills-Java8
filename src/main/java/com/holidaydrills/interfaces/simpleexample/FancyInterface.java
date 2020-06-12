@@ -14,6 +14,4 @@ public interface FancyInterface {
         return "Goodbye my friend!";
     }
 
-
-
 }
