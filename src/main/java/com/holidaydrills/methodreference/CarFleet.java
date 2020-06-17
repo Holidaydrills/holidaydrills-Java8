@@ -29,8 +29,16 @@ public class CarFleet {
 
     public List<Car> addNewCars(List<String> modelNames) {
         List<Car> newCars = modelNames.stream().map(Car::new).collect(Collectors.toList());
-        cars.addAll(newCars);
+        newCars.addAll(cars);
+        this.setCars(newCars);
         return cars;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
 }
