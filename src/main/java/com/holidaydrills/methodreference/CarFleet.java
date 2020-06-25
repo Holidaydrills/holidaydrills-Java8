@@ -23,7 +23,15 @@ public class CarFleet {
     }
 
     public List<String> getAllAvailableModelNames() {
-        return cars.stream().map(Car::getModelName).collect(Collectors.toList());
+        return cars.stream()
+                .map(Car::getModelName)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getAllAvailableModelNames1() {
+        return cars.stream()
+                .map(someCar -> someCar.getModelName())
+                .collect(Collectors.toList());
     }
 
 
