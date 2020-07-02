@@ -1,12 +1,19 @@
 package com.holidaydrills.optional;
 
+import java.util.Optional;
+
 public class Customer {
 
     private String firstName;
-    private String lastName;
+    private Optional<String> lastName;
     private Address address;
 
-    public Customer(String firstName, String lastName, String country, String city, String street, String houseNumber) {
+    public Customer(String firstName, Optional<String> lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Customer(String firstName, Optional<String> lastName, String country, String city, String street, String houseNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = new Address(country, city, street, houseNumber);
@@ -20,11 +27,11 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public Optional<String> getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(Optional<String> lastName) {
         this.lastName = lastName;
     }
 

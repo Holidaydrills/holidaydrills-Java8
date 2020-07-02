@@ -21,15 +21,15 @@ public class OptionalExamples {
         return optional;
     }
 
-    public String unpackOptional(Optional<String> optional) {
+    public String unpackOptionalWithGet(Optional<String> optional) {
         return optional.get();
     }
 
-    public String unpackOptionalAndProvideValueInCaseOfNull(Optional<String> optional) {
+    public String unpackOptionalWithOrElse(Optional<String> optional) {
         return optional.orElse("Some Standard String");
     }
 
-    public String unpackOptionalAndProvideFunctionInCaseOfNull(Optional<String> optional) {
+    public String unpackOptionalWithOrElseGet(Optional<String> optional) {
         return optional.orElseGet(() -> {
             // Add here some fancy logic here
             String a = "Hello";
@@ -39,7 +39,7 @@ public class OptionalExamples {
         });
     }
 
-    public String unpackOptionalAndThrowCustomExceptionInCaseThereIsNoValue(Optional<String> optional) {
+    public String unpackOptionalWithOrElseThrow(Optional<String> optional) {
         return optional.orElseThrow(() -> new IllegalArgumentException("Please provide a non null value"));
     }
 
@@ -51,7 +51,7 @@ public class OptionalExamples {
         return optional1.equals(optional2);
     }
 
-    public String avoidNullpointerWithoutOptionals(Customer customer) {
+    public String avoidNullPointerWithoutOptionals(Customer customer) {
         if (customer != null && customer.getAddress() != null && customer.getAddress().getCountry() != null) {
             Customer.Address address = customer.getAddress();
             if (address != null) {
@@ -63,7 +63,8 @@ public class OptionalExamples {
         }
 
         //Or
-/*        if(customer != null
+        /*
+        if(customer != null
                 && customer.getAddress() != null
                 && customer.getAddress().getCountry() != null) {
             String country = customer.getAddress().getCountry();
@@ -72,7 +73,7 @@ public class OptionalExamples {
         return "Country is null";
     }
 
-    public String avoidNullpointerWithOptionals(Customer customer) {
+    public String avoidNullPointerWithOptionals(Customer customer) {
         Optional<Customer> customerOptional = Optional.ofNullable(customer);
         String country = customerOptional
                 .map(Customer::getAddress)
@@ -81,4 +82,25 @@ public class OptionalExamples {
         return country;
     }
 
+    public String useMapOnNonOptionalField(Customer customer) {
+        Optional<Customer> customerOptional = Optional.ofNullable(customer);
+        Optional<String> firstNameOptional = customerOptional.map(Customer::getFirstName);
+        String firstName = firstNameOptional.orElse("First name is not available");
+        return firstName;
+    }
+
+    public String useMapOnOptionalField(Customer customer) {
+        Optional<Customer> customerOptional = Optional.ofNullable(customer);
+        Optional<Optional<String>> lastNameOptionalOfOptional = customerOptional.map(Customer::getLastName);
+        Optional<String> lastNameOptional = lastNameOptionalOfOptional.get();
+        String lastName = lastNameOptional.orElse("Last name is not available");
+        return lastName;
+    }
+
+    public String useFlatMapOnOptionalField(Customer customer) {
+        Optional<Customer> customerOptional = Optional.ofNullable(customer);
+        Optional<String> lastNameOptional = customerOptional.flatMap(Customer::getLastName);
+        String lastName = lastNameOptional.orElse("Last name is not available");
+        return lastName;
+    }
 }
