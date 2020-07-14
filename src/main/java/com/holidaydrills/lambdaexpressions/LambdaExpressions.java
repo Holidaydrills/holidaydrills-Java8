@@ -14,7 +14,6 @@ public class LambdaExpressions {
     }
 
     public int makeProduct() {
-        BiFunction<Integer, Integer, Integer> bi = (a, b) ->  a + b;
         return calculateTwoValues(5, 7, (a,b) -> a * b);
     }
 
