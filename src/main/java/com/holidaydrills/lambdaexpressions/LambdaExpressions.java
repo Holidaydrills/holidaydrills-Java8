@@ -1,6 +1,7 @@
 package com.holidaydrills.lambdaexpressions;
 
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
 public class LambdaExpressions {
 
@@ -44,6 +45,27 @@ public class LambdaExpressions {
                 return valueOne * valueTwo;
             }
         });
+    }
+
+    public Integer calculateTwoValuesWithBiFunction(int valueOne, int valueTwo, BiFunction<Integer, Integer, Integer> myFancyFunction) {
+        return myFancyFunction.apply(valueOne, valueTwo);
+    }
+
+    public Integer makeProductWithBiFunction() {
+        return calculateTwoValuesWithBiFunction(5, 7, (a,b) -> a * b);
+    }
+
+    public void testConsumer(String someone, Consumer<String> consumerFunction) {
+        consumerFunction.accept(someone);
+    }
+
+    public void printSomethingNice() {
+        Consumer<String> myConsumer = inputString -> System.out.println(String.format("%s is my best friend", inputString));
+        // Will print "Franky is my best friend"
+        testConsumer("Franky", myConsumer);
+
+        // Will print "Hey Franky, do you want some ice cream?"
+        testConsumer("do you want some ice cream?", inputString -> System.out.println(String.format("Hey Franky, %s", inputString)));
     }
 
 }

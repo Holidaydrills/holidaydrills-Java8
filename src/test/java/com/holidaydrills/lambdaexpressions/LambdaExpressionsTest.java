@@ -15,7 +15,18 @@ class LambdaExpressionsTest {
 
         int result = cut.calculateTwoValues(valueOne, valueTwo, (a, b) -> a + b);
 
-        int expected = 10 + 15;
+        int expected = valueOne + valueTwo;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void test_makeProductWithBiFunction() {
+        int valueOne = 10;
+        int valueTwo = 15;
+
+        int result = cut.calculateTwoValuesWithBiFunction(valueOne, valueTwo, (a,b) -> a * b);
+
+        int expected = valueOne * valueTwo;
         assertEquals(expected, result);
     }
 
