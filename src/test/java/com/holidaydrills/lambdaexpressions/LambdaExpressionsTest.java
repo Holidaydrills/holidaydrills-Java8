@@ -8,10 +8,11 @@ class LambdaExpressionsTest {
 
     LambdaExpressions cut = new LambdaExpressions();
 
+    int valueOne = 10;
+    int valueTwo = 15;
+
     @Test
-    public void test_lambda_calculateTwoValues() {
-        int valueOne = 10;
-        int valueTwo = 15;
+    public void calculateTwoValues() {
 
         int result = cut.calculateTwoValues(valueOne, valueTwo, (a, b) -> a + b);
 
@@ -20,14 +21,59 @@ class LambdaExpressionsTest {
     }
 
     @Test
-    public void test_makeProductWithBiFunction() {
-        int valueOne = 10;
-        int valueTwo = 15;
+    void makeSum() {
+        int result =cut.makeSum();
 
-        int result = cut.calculateTwoValuesWithBiFunction(valueOne, valueTwo, (a,b) -> a * b);
-
-        int expected = valueOne * valueTwo;
+        int expected = 12;
         assertEquals(expected, result);
     }
 
+    @Test
+    void makeProduct() {
+        int result = cut.makeProduct();
+
+        int expected = 35;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void makeSumTheOldWay() {
+        int result = cut.makeSumTheOldWay();
+
+        int expected = 12;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void makeProductTheOldWay() {
+        int result = cut.makeProductTheOldWay();
+
+        int expected = 35;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void makeProductTheOldWayImplementationInline() {
+        int result = cut.makeProductTheOldWayImplementationInline();
+
+        int expected = 35;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void calculateTwoValuesWithBiFunction() {
+        int result = cut.calculateTwoValuesWithBiFunction(valueOne, valueTwo, (a, b) -> a * b);
+
+        int expected = 35;
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void makeProductWithBiFunction() {
+
+        int result = cut.makeProductWithBiFunction();
+
+        int expected = 35;
+        assertEquals(expected, result);
+    }
 }
