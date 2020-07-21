@@ -21,4 +21,15 @@ class StreamExamplesTest {
 
     }
 
+    @Test
+    public void multiplyByTwoWithStream() {
+        List<Integer> input = List.of(1,2,3,4,7);
+
+        List<Integer> result = cut.multiplyByTwoWithStream(input);
+
+        List<Integer> expected = List.of(2,4,6,8,14);
+        assertEquals(expected, result);
+
+    }
+
 }
