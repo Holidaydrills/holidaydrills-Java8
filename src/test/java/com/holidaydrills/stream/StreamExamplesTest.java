@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,12 +47,21 @@ class StreamExamplesTest {
     }
 
     @Test
-    public void getSumOfBooks() {
-        double result = cut.getSumOfBooks();
+    public void getSumOfBookPricesWithCollector() {
+        double result = cut.getSumOfBookPricesWithCollector();
 
         double expected = 60.00;
         assertEquals(expected, result);
     }
+
+    @Test void getSumOfBookPricesPrices() {
+        double result = cut.getSumOfBookPricesPrices();
+
+        double expected = 60.00;
+        assertEquals(expected, result);
+
+    }
+
 
     @Test void groupBooksByAuthor() {
         Map<String, List<Book>> result = cut.groupBooksByAuthor();

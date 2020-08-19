@@ -66,17 +66,6 @@ public class StreamExamples {
         }
     }
 
-    public double getSumOfBooks() {
-        List<Book> books = List.of(
-                new Book("Sapiens - A Brief History of Humankind", 19.00),
-                new Book("Thinking, Fast and Slow", 20.00),
-                new Book("Why We Sleep", 21.00));
-
-        double sumOfBookPrices = books.stream().collect(Collectors.summingDouble(Book::getPrice));
-
-        // Will return 60.00
-        return sumOfBookPrices;
-    }
 
     public Map<String, List<Book>> groupBooksByAuthor() {
         List<Book> books = List.of(
@@ -93,5 +82,28 @@ public class StreamExamples {
         Map<String, List<Book>> authorToBooks = books.stream().collect(Collectors.groupingBy(Book::getAuthor));
 
         return authorToBooks;
+    }
+
+    public double getSumOfBookPricesWithCollector() {
+        List<Book> books = List.of(
+                new Book("Sapiens - A Brief History of Humankind", 19.00),
+                new Book("Thinking, Fast and Slow", 20.00),
+                new Book("Why We Sleep", 21.00));
+
+        double sumOfBookPrices = books.stream().collect(Collectors.summingDouble(Book::getPrice));
+
+        // Will return 60.00
+        return sumOfBookPrices;
+    }
+
+    public double getSumOfBookPricesPrices() {
+        List<Book> books = List.of(
+                new Book("Sapiens - A Brief History of Humankind", 19.00),
+                new Book("Thinking, Fast and Slow", 20.00),
+                new Book("Why We Sleep", 21.00));
+
+        double sumOfBookPrices = books.stream().mapToDouble(Book::getPrice).sum();
+
+        return sumOfBookPrices;
     }
 }
