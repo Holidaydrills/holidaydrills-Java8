@@ -8,6 +8,8 @@ public class Main {
         TimeExamples timeExamples = new TimeExamples();
         timeExamples.operationsOnDates();
         timeExamples.timeZones();
+        timeExamples.periodAndDuration();
+        timeExamples.chronoUnitExample();
 
     }
 

@@ -1,6 +1,7 @@
 package com.holidaydrills.timepackage;
 
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 public class TimeExamples {
 
@@ -53,5 +54,39 @@ public class TimeExamples {
 
         ZonedDateTime zonedDateTime = ZonedDateTime.of(LocalDate.now(), LocalTime.now(), ZoneId.of("Europe/Brussels"));
         System.out.println(zonedDateTime); // 2020-08-25T08:26:46.648786+02:00[Europe/Brussels]
+    }
+
+    public void periodAndDuration() {
+        LocalDate initialDate = LocalDate.now();
+        LocalDate secondDate = initialDate.plus(Period.ofYears(2)).plus(Period.ofDays(8));
+
+        Period periodBetweenDates = Period.between(initialDate, secondDate);
+        System.out.println(periodBetweenDates); // P2Y0M8D
+        System.out.println(periodBetweenDates.getYears()); // 2
+        System.out.println(periodBetweenDates.getMonths()); // 0
+        System.out.println(periodBetweenDates.getDays());  // 8
+
+        LocalTime initialTime = LocalTime.now();
+        LocalTime secondTime = initialTime.plus(Duration.ofHours(3))
+                                            .plus(Duration.ofMinutes(5))
+                                            .plus(Duration.ofSeconds(30))
+                                            .plus(Duration.ofMillis(123))
+                                            .plus(Duration.ofNanos(56789));
+
+        Duration durationBetweenTimes = Duration.between(initialTime, secondTime);
+        System.out.println(durationBetweenTimes); // PT3H5M30.123056789S
+        System.out.println(durationBetweenTimes.getSeconds()); // 11130
+    }
+
+    public void chronoUnitExample() {
+        LocalDate initialDate = LocalDate.of(2020, 1, 1);
+        LocalDate secondDate = LocalDate.of(2020, 4, 1);
+
+        int daysFromPeriod = Period.between(initialDate, secondDate).getDays();
+        long daysFromChronoUnit = ChronoUnit.DAYS.between(initialDate, secondDate);
+
+        System.out.println(daysFromPeriod); // 0
+        System.out.println(daysFromChronoUnit); // 91
+
     }
 }
